@@ -1,25 +1,28 @@
-﻿double GetDistance(int x1, int y1, int x2, int y2, int z1, int z2)
+﻿string GetTripleTable(int n)
 {
-    double distance = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2) + Math.Pow((z2 - z1), 2));
-    return Math.Round(distance, 2, MidpointRounding.ToNegativeInfinity);
+    string tripleString = "";
+  
+    if(n<1)
+    { 
+        return "Введено неверное число, попробуйте снова";
+    }
+    else 
+    {
+    for (int i = 1; i <= n; i++)
+    {
+        if (i == n)
+        {
+            tripleString = tripleString + $"{Math.Pow(i, 3)}";
+        }
+        else
+        {
+            tripleString = tripleString + $"{Math.Pow(i, 3)}, ";
+        }
+    }
+    return tripleString;
+    }
 }
 
-Console.Write("Введите координату X(1 числа): ");
-int x1 = int.Parse(Console.ReadLine());
-
-Console.Write("Введите координату Y(1 числа): ");
-int y1 = int.Parse(Console.ReadLine());
-
-Console.Write("Введите координату Z(1 числа): ");
-int z1 = int.Parse(Console.ReadLine());
-
-Console.Write("Введите координату X(2 числа): ");
-int x2 = int.Parse(Console.ReadLine());
-
-Console.Write("Введите координату Y(2 числа): ");
-int y2 = int.Parse(Console.ReadLine());
-
-Console.Write("Введите координату Z(2 числа): ");
-int z2 = int.Parse(Console.ReadLine());
-
-Console.WriteLine($"Растояние между точкой A c координатами ({x1},{y1},{z1}) и точкой B c координатами({x2},{y2},{z2}) = {GetDistance(x1, y1, z1, x2, y2, z2)}");
+Console.Write("Введите число: ");
+int x = int.Parse(Console.ReadLine());
+Console.Write($"Таблица кубов от 1 до {x} = {GetTripleTable(x)}");
