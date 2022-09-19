@@ -1,44 +1,25 @@
-﻿int GetWholeDigitCount(int x)
+﻿double GetDistance(int x1, int y1, int x2, int y2, int z1, int z2)
 {
-    int count = 1;
-    while ((x /= 10) > 0) ++count;
-    return count;
+    double distance = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2) + Math.Pow((z2 - z1), 2));
+    return Math.Round(distance, 2, MidpointRounding.ToNegativeInfinity);
 }
 
-string CheckPalindrome2(int x)
-{
-    if (x < 10)
-    {
-        return "нет";
-    }
-    else
-    {
-        int copyX = x;
-        int DigitCount = GetWholeDigitCount(x);
-        int[] nums1 = new int[DigitCount];
-        int[] nums2 = new int[DigitCount];
-        for (int i = 0; i < DigitCount; i++)
-        {
-            nums1[i] = copyX % 10;
-            nums2[DigitCount - (i + 1)] = copyX % 10;
-            copyX = copyX / 10;
-        }
-        if (nums1.SequenceEqual(nums2))
-        {
-            return "да";
-        }
-        else
-        {
-            return "нет";
-        }
-    }
-}
+Console.Write("Введите координату X(1 числа): ");
+int x1 = int.Parse(Console.ReadLine());
 
+Console.Write("Введите координату Y(1 числа): ");
+int y1 = int.Parse(Console.ReadLine());
 
-Console.Write("Введите число: ");
-int num = int.Parse(Console.ReadLine());
+Console.Write("Введите координату Z(1 числа): ");
+int z1 = int.Parse(Console.ReadLine());
 
-string result = CheckPalindrome2(num);
+Console.Write("Введите координату X(2 числа): ");
+int x2 = int.Parse(Console.ReadLine());
 
+Console.Write("Введите координату Y(2 числа): ");
+int y2 = int.Parse(Console.ReadLine());
 
-Console.Write($"Число {num} палиндром? -{result}");
+Console.Write("Введите координату Z(2 числа): ");
+int z2 = int.Parse(Console.ReadLine());
+
+Console.WriteLine($"Растояние между точкой A c координатами ({x1},{y1},{z1}) и точкой B c координатами({x2},{y2},{z2}) = {GetDistance(x1, y1, z1, x2, y2, z2)}");
